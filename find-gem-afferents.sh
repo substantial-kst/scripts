@@ -54,7 +54,7 @@ IFS=$' ' read -r -d '' -a gemspec_matches < <( eval $gemspec_cmd && printf '\0' 
 lockfile_matches=()
 IFS=$' ' read -r -d '' -a lockfile_matches < <( eval $lockfile_cmd && printf '\0' )
 
-echo -e "${BCya}Direct Afferents"
+echo -e "${BCya}Gemspec Afferents"
 echo -e "----------------${RCol}"
 
 for match in $gemspec_matches; do
@@ -62,7 +62,7 @@ for match in $gemspec_matches; do
 done
 
 echo ""
-echo -e "${Gre}Indirect Afferents"
+echo -e "${Gre}Lockfile Afferents"
 echo -e "------------------${RCol}"
 
 for match in $lockfile_matches; do
