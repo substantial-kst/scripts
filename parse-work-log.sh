@@ -3,15 +3,24 @@
 # View most recent work log entry 
 #
 # Usage
-# > parse_work_log.sh FILENAME
+# > parse_work_log.sh FILENAME [ENTRY_COUNT]
 
-set -euo pipefail
+set -eo pipefail
 
 source $SCRIPTS_PATH/colors.sh
 
 log_file=$1
+entry_count=$2
+
+if [[ ! -z $entry_count ]]; then
+  if [[ "$entry_count" =~ ^[0-9]+$ ]]; then
+    allowed_delimiter=$(($entry_count + 1))
+  fi
+else
+  allowed_delimiter=2
+fi
+
 delimiter="##"
-allowed_delimiter=1
 
 if [ -z $log_file ]; then
   echo -e "${BRed}Must specify log file to view${RCol}"
@@ -20,8 +29,10 @@ fi
 
 source $SCRIPTS_PATH/format-markdown-line.sh
 
-delimiter_lines=( $(grep -n -m 2 $delimiter $log_file | sed -e 's/:.*//gi') )
-last_line=$(( ${delimiter_lines[1]} - 1 ))
+delimiter_lines=( $(grep -n -m $allowed_delimiter $delimiter $log_file | sed -e 's/:.*//gi') )
+last_delimiter=${delimiter_lines[${#delimiter_lines[@]}-1]}
+
+last_line=$(( ${last_delimiter} - 1 ))
 lines=$(IFS="\n" head -n ${last_line} $log_file)
 
 IFS=
