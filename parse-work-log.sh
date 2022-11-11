@@ -7,7 +7,7 @@
 
 set -eo pipefail
 
-source $SCRIPTS_PATH/colors.sh
+source $SCRIPT_DIR/colors.sh
 
 log_file=$1
 entry_count=$2
@@ -27,7 +27,7 @@ if [ -z $log_file ]; then
   exit 1
 fi
 
-source $SCRIPTS_PATH/format-markdown-line.sh
+source $SCRIPT_DIR/format-markdown-line.sh
 
 delimiter_lines=( $(grep -n -m $allowed_delimiter $delimiter $log_file | sed -e 's/:.*//gi') )
 last_delimiter=${delimiter_lines[${#delimiter_lines[@]}-1]}

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Find afferent references to current project gem
-source $SCRIPTS_PATH/colors.sh
+source $SCRIPT_DIR/colors.sh
 
 directory=$(pwd)
 path_limit=$1

@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-source $SCRIPTS_PATH/colors.sh
+source $SCRIPT_DIR/colors.sh
 
 function format_links {
   formatted=$(echo -e $formatted | sed -e "s/\(\[.*\]\)\((.*)\)/\1`echo -e ${UGre}`\2`echo -e ${RCol}`/g")

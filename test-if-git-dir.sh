@@ -2,7 +2,7 @@
 
 inside_git_repo="$(git rev-parse --is-inside-work-tree 2> /dev/null)"
 
-source $SCRIPTS_PATH/colors.sh
+source $SCRIPT_DIR/colors.sh
 
 if [ "$inside_git_repo" ]; then
   # inside git repo

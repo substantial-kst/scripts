@@ -3,7 +3,7 @@
 # Resets the git workspace, stashing any local changes, and pulling latest
 # from the remote integration branch (examples: "main", "master")
 
-source $SCRIPTS_PATH/colors.sh
+source $SCRIPT_DIR/colors.sh
 
 exec 2> /dev/null
 # Ensure we're in a git directory to begin with; exit if not
